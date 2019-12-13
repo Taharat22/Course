@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CourseForm</title>
+</head>
+<body>
+<form method="post" th:object="${course}" th:action="@{/course/save}">
+    <label>Course Code</label>
+    <input type="text" th:field="*{courseCode}" th:value="${course.getTitle()}">
+    <label>Course Title</label>
+    <input type="text" th:field="*{title}" th:value="${course.getCredit()}">
+    <label>Course Credit</label>
+    <input type="text" th:field="*{credit}" th:value="${course.getCourseCode()}">
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Course</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<table border="1" class="table-hover table-dark">
+    <thead>
+    <tr>
+        <td>Course Code</td>
+        <td>Course Name</td>
+        <td>Credit</td>
+        <td>Action</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="course: ${courses}">
+        <td th:text="${course.getCourseCode()}"></td>
+        <td th:text="${course.getTitle()}"></td>
+        <td th:text="${course.getCredit()}"></td>
+        <td>
+            <a role="button" th:href="@{'/course/edit/'+${course.courseCode}}">Edit</a>
+            <a role="button" th:href="@{'/course/remove/'+${course.courseCode}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/course/addNew}">Add New Course</a>
+</body>
+</html>

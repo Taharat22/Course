@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" >
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{css/bootstrap.css}">
+    <script rel="script" src="../static/js/popper.min.js" type="text/javascript" th:src="@{js/popper.min.js}"></script>
+    <script rel="script" src="../static/js/jquery-3.3.1.min.js" type="text/javascript" th:src="@{js/jquery-3.3.1.min.js}"></script>
+    <script rel="script" src="../static/js/bootstrap.min.js" type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+</head>
+<body>
+<table border="1" class="table-primary">
+    <thead>
+    <tr>
+        <th>Room Number</th>
+        <th>Number Of Row</th>
+        <th>Bench Per Row</th>
+        <th>Bench Capacity</th>
+        <th>Total Capacity</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="room: ${rooms}">
+        <td th:text="${room.getRoomNo()}"></td>
+        <td th:text="${room.getNoOfRow()}"></td>
+        <td th:text="${room.benchPerRow}"></td>
+        <td th:text="${room.benchCapacity}"></td>
+        <td th:text="${room.getNoOfRow()*room.benchPerRow*room.benchCapacity}"></td>
+        <td>
+            <a role="button" th:href="@{'/rooms/edit/'+${room.roomNo}}">Edit</a>
+            <a role="button" th:href="@{'/rooms/remove/'+${room.roomNo}}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/rooms/addNew}">Add New Room</a>
+</body>
+</html>
